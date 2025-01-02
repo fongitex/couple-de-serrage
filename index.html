@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur pour les boulons H.R 8.8 et 10.9</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Calculateur pour les boulons H.R 8.8 et 10.9</h1>
+    </header>
+
+    <main>
+        <div class="content">
+            <label for="type">Type de boulons :</label>
+            <select id="type" onchange="updateType()">
+                <option value="">-- Sélectionnez --</option>
+                <option value="8.8">H.R 8.8</option>
+                <option value="10.9">H.R 10.9</option>
+            </select>
+
+            <label for="diametre">Diamètre des boulons (mm) :</label>
+            <select id="diametre" onchange="updateValues()">
+                <option value="">-- Sélectionnez --</option>
+                <option value="12">12</option>
+                <option value="14">14</option>
+                <option value="16">16</option>
+                <option value="18">18</option>
+                <option value="20">20</option>
+                <option value="22">22</option>
+                <option value="24">24</option>
+                <option value="27">27</option>
+                <option value="30">30</option>
+            </select>
+
+            <label for="limite">Limite élastique de la vis (σ<sub>eb</sub> en MPa) :</label>
+            <input type="text" id="limite" readonly>
+
+            <label for="section">Section résistante de la vis (<span style="font-family: 'Times New Roman';">A<sub>s</sub></span> en mm²) :</label>
+            <input type="text" id="section" readonly>
+
+            <label for="k">Coefficient K (entre 0.12 et 0.22) :</label>
+            <input type="number" id="k" step="0.01" min="0.12" max="0.22">
+
+            <button onclick="calculate()">Calculer</button>
+
+            <div class="result">
+                <h3>Résultats :</h3>
+                <p><strong>Précontrainte (P<sub>v</sub> en N) :</strong></p>
+                <input type="text" id="precontrainte" readonly>
+
+                <p><strong>Couple de serrage (C en m.N) :</strong></p>
+                <input type="text" id="couple" readonly>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <!-- Section des définitions placée avant les formules -->
+            <h3>Définitions :</h3>
+            <p><strong>Précontrainte (Pv) :</strong> Force de traction appliquée pour garantir un assemblage rigide. Calculée à partir de la limite élastique (EN 14399).</p>
+            <p><strong>Couple de serrage (C) :</strong> Moment de force pour appliquer la précontrainte. Basé sur la norme EN 1090-2.</p>
+
+            <!-- Formules de calcul placées après les définitions -->
+            <div class="formulas">
+                <h3>Formules de calcul :</h3>
+                <p><strong>Précontrainte (P<sub>v</sub>) :</strong> P<sub>v</sub> = 0,8 × σ<sub>eb</sub> × A<sub>s</sub></p>
+                <p><strong>Couple de serrage (C) :</strong> C = 0,88 × K × d × σ<sub>eb</sub> × A<sub>s</sub> × 10<sup>−3</sup></p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Geanah Adil</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
