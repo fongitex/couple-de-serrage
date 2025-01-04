@@ -1,4 +1,4 @@
-﻿const data = {
+const data = {
     "8.8": {
         12: { limite: 640, section: 84.3 },
         14: { limite: 640, section: 115 },
@@ -53,9 +53,11 @@ function calculate() {
         return;
     }
 
-    const precontrainte = 0.8 * limite * section;
+    // Remplacement de 0.8 par 0.7 pour la précontrainte
+    const precontrainte = 0.7 * limite * section;
     document.getElementById("precontrainte").value = precontrainte.toFixed(2);
 
-    const couple = 0.88 * k * diametre * limite * section * 1e-3;
+    // Remplacement de 0.88 par 0.7 pour le couple de serrage
+    const couple = 0.7 * k * diametre * limite * section * 1e-3;
     document.getElementById("couple").value = couple.toFixed(2);
 }
